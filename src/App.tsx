@@ -1,104 +1,86 @@
-import { about, education, experience, highlights, profile, skills } from './data'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import Nav from './components/Nav'
+import Hero from './components/Hero'
+import About from './components/About'
+import Experience from './components/Experience'
+import Work from './components/Work'
+import Pipeline from './components/Pipeline'
+import Skills from './components/Skills'
+import Contact from './components/Contact'
+import CommandPalette from './components/CommandPalette'
+import type { Command } from './components/CommandPalette'
+import { profile, sections } from './data'
+import { useTheme } from './lib/hooks'
 
-const nav = [
-  ['About', '#about'],
-  ['Experience', '#experience'],
-  ['Skills', '#skills'],
-  ['Contact', '#contact'],
-]
+const YEAR = new Date().getFullYear()
 
 function App() {
+  const [theme, toggleTheme] = useTheme()
+  const [paletteOpen, setPaletteOpen] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+
+  const notify = useCallback((msg: string) => {
+    setToast(msg)
+    window.setTimeout(() => setToast(null), 2200)
+  }, [])
+
+  const copyEmail = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+      notify('Email copied to clipboard')
+    } catch {
+      notify(profile.email)
+    }
+  }, [notify])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setPaletteOpen((o) => !o)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  const commands = useMemo<Command[]>(
+    () => [
+      ...sections.map((s) => ({
+        id: `go-${s.id}`,
+        label: `Go to ${s.label}`,
+        hint: 'Section',
+        run: () => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth' }),
+      })),
+      { id: 'top', label: 'Back to top', hint: 'Section', run: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+      { id: 'copy', label: 'Copy email address', hint: 'Action', run: copyEmail },
+      { id: 'theme', label: `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`, hint: 'Action', run: toggleTheme },
+      { id: 'demo-pipeline', label: 'Run the CI/CD pipeline demo', hint: 'Demo', run: () => document.getElementById('pipeline')?.scrollIntoView({ behavior: 'smooth' }) },
+      { id: 'linkedin', label: 'Open LinkedIn', hint: 'Link', run: () => window.open(profile.linkedin, '_blank', 'noopener') },
+      { id: 'github', label: 'Open GitHub', hint: 'Link', run: () => window.open(profile.github, '_blank', 'noopener') },
+    ],
+    [copyEmail, theme, toggleTheme],
+  )
+
   return (
     <>
-      <header className="topbar">
-        <a className="brand" href="#top">AV</a>
-        <nav>
-          {nav.map(([label, href]) => (
-            <a key={href} href={href}>{label}</a>
-          ))}
-        </nav>
-      </header>
-
-      <main id="top">
-        <section className="hero">
-          <p className="eyebrow">{profile.location}</p>
-          <h1>{profile.name}</h1>
-          <h2>{profile.role}</h2>
-          <p className="lede">{profile.tagline}</p>
-          <div className="actions">
-            <a className="btn primary" href={`mailto:${profile.email}`}>Get in touch</a>
-            <a className="btn" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-            <a className="btn" href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-          <ul className="stats">
-            {highlights.map((h) => (
-              <li key={h.label}>
-                <strong>{h.value}</strong>
-                <span>{h.label}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="about" className="section">
-          <h3>About</h3>
-          {about.map((p) => <p key={p}>{p}</p>)}
-        </section>
-
-        <section id="experience" className="section">
-          <h3>Experience</h3>
-          <ol className="timeline">
-            {experience.map((job) => (
-              <li key={job.company} className="job">
-                <div className="job-head">
-                  <div>
-                    <h4>{job.title}</h4>
-                    <p className="company">{job.company}</p>
-                  </div>
-                  <p className="meta">{job.period}<br />{job.location}</p>
-                </div>
-                <ul className="points">
-                  {job.points.map((p) => <li key={p}>{p}</li>)}
-                </ul>
-                <ul className="chips">
-                  {job.stack.map((s) => <li key={s}>{s}</li>)}
-                </ul>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section id="skills" className="section">
-          <h3>Skills</h3>
-          <div className="skill-grid">
-            {Object.entries(skills).map(([group, items]) => (
-              <div key={group} className="skill-card">
-                <h4>{group}</h4>
-                <ul className="chips">
-                  {items.map((s) => <li key={s}>{s}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <h3 className="sub">Education</h3>
-          <ul className="edu">
-            {education.map((e) => (
-              <li key={e.school}>
-                <span><strong>{e.school}</strong> · {e.detail}</span>
-                <span className="meta">{e.period}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="contact" className="section contact">
-          <h3>Contact</h3>
-          <p>I'm always happy to talk about backend systems, security platforms, or a role where I can help.</p>
-          <a className="btn primary" href={`mailto:${profile.email}`}>{profile.email}</a>
-        </section>
+      <a className="skip" href="#about">Skip to content</a>
+      <Nav theme={theme} onToggleTheme={toggleTheme} onOpenPalette={() => setPaletteOpen(true)} />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Work />
+        <Pipeline />
+        <Skills />
+        <Contact onCopyEmail={copyEmail} />
       </main>
-
-      <footer>© {new Date().getFullYear()} {profile.name} · Built with React + TypeScript</footer>
+      <footer className="footer">
+        <span>© {YEAR} {profile.name}</span>
+        <span>Hand-built with React + TypeScript · no UI libraries</span>
+      </footer>
+      <CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)} commands={commands} />
+      <div className={`toast ${toast ? 'show' : ''}`} role="status" aria-live="polite">{toast}</div>
     </>
   )
 }

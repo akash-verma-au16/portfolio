@@ -7,8 +7,8 @@ type Stage = { name: string; icon: string; logs: string[] }
 const STAGES: Stage[] = [
   { name: 'Commit', icon: '⎇', logs: ['push to main: feat(rules): bulk attestation', 'triggered workflow ci.yml'] },
   { name: 'Build', icon: '▣', logs: ['npm ci && tsc -b && vite build', 'docker build -t app:3f9c2e1 .'] },
-  { name: 'Test', icon: '✓', logs: ['vitest: 214 passed', 'pytest: 386 passed'] },
-  { name: 'Security scan', icon: '⛨', logs: ['dependency scan: 0 critical, 0 high', 'image scan: passed policy'] },
+  { name: 'Test', icon: '✓', logs: ['vitest + jest: unit suites passed', 'pytest: passed', 'cypress: e2e passed'] },
+  { name: 'Security scan', icon: '⛨', logs: ['snyk test: 0 critical, 0 high', 'sonarqube: quality gate passed'] },
   { name: 'Secrets', icon: '🔑', logs: ['vault: injected 6 secrets at runtime', 'no secrets found in image layers'] },
   { name: 'Deploy', icon: '☸', logs: ['oc apply -f openshift/template.yaml', 'rollout: 3/3 pods ready'] },
 ]

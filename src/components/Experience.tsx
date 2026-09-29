@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import Reveal from './Reveal'
 import { experience, profile } from '../data'
-import { formatDuration, formatRange, monthsBetween } from '../lib/time'
+import { formatRange, monthsBetween } from '../lib/time'
 
 export default function Experience() {
   const [active, setActive] = useState(0)
@@ -47,7 +47,7 @@ export default function Experience() {
                 onClick={() => setActive(i)}
               >
                 <span className="xp-tab-name">{j.short}</span>
-                <span className="xp-tab-dur">{formatDuration(j.start, j.end)}</span>
+                <span className="xp-tab-dur">{j.start.slice(0, 4)} – {j.end ? j.end.slice(0, 4) : 'Now'}</span>
               </button>
             ))}
             <span className="xp-indicator" style={{ '--i': active } as React.CSSProperties} aria-hidden="true" />
@@ -60,8 +60,7 @@ export default function Experience() {
                 <p className="xp-company">{job.company} · {job.location}</p>
               </div>
               <div className="xp-when">
-                <span className="pill">{formatDuration(job.start, job.end)}</span>
-                <span className="xp-range">{formatRange(job.start, job.end)}</span>
+                <span className="pill">{formatRange(job.start, job.end)}</span>
               </div>
             </div>
             <p className="xp-summary">{job.summary}</p>

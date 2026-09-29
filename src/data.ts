@@ -30,7 +30,7 @@ export const capabilities = [
     title: 'Front end',
     icon: '◧',
     blurb: 'Complete, user-facing applications in React and TypeScript. Component architecture, state, typed APIs and the workflows people use every day.',
-    tags: ['React', 'TypeScript', 'Next.js', 'React Native', 'Redux', 'Tailwind'],
+    tags: ['React', 'TypeScript', 'Next.js', 'Three.js', 'React Native', 'Material UI', 'Tailwind'],
   },
   {
     title: 'Back end & data',
@@ -41,8 +41,8 @@ export const capabilities = [
   {
     title: 'DevOps & security',
     icon: '⛨',
-    blurb: 'GitHub Actions CI/CD to Kubernetes on OpenShift, security scanning in the pipeline, and secrets kept in Vault where they belong.',
-    tags: ['GitHub Actions', 'Kubernetes', 'OpenShift', 'Vault', 'Azure', 'AWS'],
+    blurb: 'GitHub Actions CI/CD to Kubernetes on OpenShift, Snyk and SonarQube scans in the pipeline, and secrets kept in Vault where they belong.',
+    tags: ['GitHub Actions', 'Kubernetes', 'OpenShift', 'Vault', 'Snyk', 'SonarQube', 'Azure', 'AWS'],
   },
 ]
 
@@ -192,13 +192,20 @@ export const projects: Project[] = [
 ]
 
 export const skills: Record<string, string[]> = {
-  Frontend: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'React Native', 'Redux', 'Tailwind CSS', 'HTML5', 'CSS3'],
-  Backend: ['Python', 'FastAPI', 'Django', 'Flask', 'Node.js', 'REST APIs', 'Celery', 'Redis', 'Java'],
-  'DevOps & Cloud': ['GitHub Actions', 'CI/CD', 'Kubernetes', 'OpenShift', 'Docker', 'Azure', 'AWS IAM', 'Lambda', 'S3', 'CloudWatch', 'CloudTrail', 'CloudFormation', 'GCP'],
-  Security: ['Vault', 'Pipeline security scanning', 'Firewall-rule lifecycle', 'Network security automation'],
-  Data: ['PostgreSQL', 'MySQL', 'Databricks', 'Airflow', 'Pandas', 'NumPy', 'Tableau'],
+  Frontend: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Three.js', 'React Native', 'Redux', 'Tailwind CSS', 'Material UI', 'HTML5', 'CSS3'],
+  Backend: ['Python', 'FastAPI', 'Django', 'Flask', 'Node.js', 'Express.js', 'REST APIs', 'Microservices', 'Celery', 'Redis'],
+  'DevOps & Cloud': ['GitHub Actions', 'CI/CD', 'PR reviews', 'Kubernetes', 'OpenShift', 'Docker', 'Azure', 'AWS IAM', 'Lambda', 'S3', 'CloudWatch', 'CloudTrail', 'CloudFormation', 'GCP'],
+  Security: ['Vault', 'Snyk', 'SonarQube', 'Pipeline security scanning', 'Firewall-rule lifecycle', 'Network security automation'],
+  Testing: ['Jest', 'Vitest', 'Pytest', 'Cypress'],
+  Data: ['PostgreSQL', 'MySQL', 'MongoDB', 'Databricks', 'Airflow', 'Pandas', 'NumPy', 'Tableau'],
   'AI tooling': ['Claude Code', 'Agentic AI-assisted development'],
 }
+
+export const certifications = [
+  { issuer: 'Udemy', date: 'Aug 2026', items: ['Databricks Certified Data Engineer Associate Preparation'] },
+  { issuer: 'Google Cloud Skills Boost', date: 'May 2023', items: ['Deploy and Manage Cloud Environments with Google Cloud', 'Perform Foundational Infrastructure Tasks in Google Cloud', 'Google Cloud Essentials'] },
+  { issuer: 'LinkedIn Learning', date: 'Oct 2022', items: ['Docker for Developers', 'Learning Docker', 'DevOps Foundations: Containers', 'Learning Cloud Computing: Core Concepts', 'Learning Next.js'] },
+]
 
 export const education = [
   { school: 'Conestoga College', detail: 'Cloud Computing and Network Security', period: '2023 – 2024' },

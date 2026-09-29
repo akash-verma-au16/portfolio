@@ -440,6 +440,15 @@ kbd {
 .skill-cloud .g-3 { --c: #f87171; }
 .skill-cloud .g-4 { --c: var(--warm); }
 .skill-cloud .g-5 { --c: #f472b6; }
+.skill-cloud .g-6 { --c: #34d399; }
+.certs { margin-bottom: 18px; }
+.sub-title { font-size: 1.05rem; margin: 0 0 16px; color: var(--muted); font-weight: 600; }
+.cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cert { padding: 22px 24px; }
+.cert h4 { margin: 0 0 10px; font-size: 1.05rem; }
+.cert ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.cert li { position: relative; padding-left: 18px; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+.cert li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .edu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .edu-item { padding: 24px; }
 .edu-period { font-family: var(--mono); font-size: 0.8rem; color: var(--warm); margin: 0 0 6px; }
@@ -544,7 +553,7 @@ kbd {
   .pipe { padding: 22px; }
   .pipe-track { grid-template-columns: repeat(3, 1fr); row-gap: 20px; }
   .pipe-line { display: none; }
-  .edu { grid-template-columns: 1fr; }
+  .edu, .cert-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {

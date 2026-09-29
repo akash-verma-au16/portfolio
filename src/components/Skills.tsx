@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
-import { education, skills } from '../data'
+import { certifications, education, skills } from '../data'
 
 const groups = ['All', ...Object.keys(skills)]
 
@@ -37,6 +37,21 @@ export default function Skills() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal className="certs">
+          <h3 className="sub-title">Certifications</h3>
+          <div className="cert-grid">
+            {certifications.map((c) => (
+              <div key={c.issuer} className="cert card">
+                <p className="edu-period">{c.date}</p>
+                <h4>{c.issuer}</h4>
+                <ul>
+                  {c.items.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal className="edu">

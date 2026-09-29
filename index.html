@@ -1,13 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Akash Verma - full-stack software engineer building backend services, data pipelines and React/TypeScript front ends for security-focused platforms." />
-    <title>Akash Verma | Full-Stack Engineer</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-sRZS3L2i.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-DPhIDi3Z.css">
+    <meta name="description" content="Akash Verma - senior full-stack engineer building React and TypeScript front ends, Python services and CI/CD pipelines for security-focused platforms." />
+    <meta property="og:title" content="Akash Verma | Senior Full-Stack Engineer" />
+    <meta property="og:description" content="React & TypeScript front ends, Python services, and the pipelines that ship them." />
+    <meta name="theme-color" content="#070b0f" />
+    <title>Akash Verma | Senior Full-Stack Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <script>
+      // Apply the saved theme before first paint so there's no flash.
+      try {
+        var t = localStorage.getItem('av-theme')
+        if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/portfolio/assets/index-CAj50E68.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-C7M-Sjve.css">
   </head>
   <body>
     <div id="root"></div>

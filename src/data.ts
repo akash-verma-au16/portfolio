@@ -9,7 +9,7 @@ export const profile = {
 }
 
 export const about = [
-  "I'm a full-stack engineer with seven years of experience building software that takes manual, error-prone work off people's plates. Today I'm a Senior DevOps Developer at RBC, where a team of three of us is building a network-security platform from scratch.",
+  "I'm a full-stack engineer with seven years of experience building software that takes manual, error-prone work off people's plates. Today I'm a Senior DevOps Developer at RBC, where I built the user-facing front end of an internal network-security platform in React and TypeScript.",
   'I like owning a feature end to end: sketching the system design, building the API and the async workers behind it, shipping the UI in front of it, and watching it run in production. Most of my recent work sits where backend engineering meets cloud and network security.',
 ]
 
@@ -29,11 +29,11 @@ export const experience: Job[] = [
     period: 'Feb 2025 - Present',
     location: 'Toronto, ON',
     points: [
-      'Building, from the ground up, a unified platform that manages the full firewall-rule lifecycle (provisioning, attestation, decommissioning and migration) for network and risk analysts.',
-      'Designed and built the entire React/TypeScript front end single-handedly.',
+      'Built the complete user-facing front end of an internal network-security platform in React and TypeScript, covering the full firewall-rule lifecycle.',
+      'Owned front-end architecture end to end: component design, state management, typed API integration and analyst workflows.',
       'Built FastAPI services on PostgreSQL with Databricks as a data source, plus Celery/Redis workers for long-running jobs.',
       'Automated pipelines that remove roughly half of the manual effort in the rule lifecycle; Airflow DAGs feed Tableau dashboards.',
-      'Helped deliver a data-center migration product that automates large-scale IP-pair migrations, saving millions of dollars.',
+      'Contributed to a data-center migration tool that automates large-scale IP-pair firewall migrations, delivering multi-million-dollar savings.',
     ],
     stack: ['React', 'TypeScript', 'FastAPI', 'Celery', 'Redis', 'PostgreSQL', 'Airflow', 'Databricks'],
   },
@@ -91,7 +91,7 @@ export const experience: Job[] = [
 export const highlights = [
   { value: '7 yrs', label: 'building production software' },
   { value: '~50%', label: 'of manual analyst effort automated away' },
-  { value: '3', label: 'engineers building a security platform from scratch' },
+  { value: 'React + TS', label: 'complete user-facing front end for a security platform' },
 ]
 
 export const skills: Record<string, string[]> = {

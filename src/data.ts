@@ -196,7 +196,8 @@ export const skills: Record<string, string[]> = {
   Backend: ['Python', 'FastAPI', 'Django', 'Flask', 'Node.js', 'Express.js', 'REST APIs', 'Microservices', 'Celery', 'Redis'],
   'DevOps & Cloud': ['GitHub Actions', 'CI/CD', 'PR reviews', 'Kubernetes', 'OpenShift', 'Docker', 'Azure', 'AWS IAM', 'Lambda', 'S3', 'CloudWatch', 'CloudTrail', 'CloudFormation', 'GCP'],
   Security: ['Vault', 'Snyk', 'SonarQube', 'Pipeline security scanning', 'Firewall-rule lifecycle', 'Network security automation'],
-  Testing: ['Jest', 'Vitest', 'Pytest', 'Cypress'],
+  Testing: ['Jest', 'Vitest', 'React Testing Library', 'Pytest', 'Cypress', 'Playwright', 'Puppeteer', 'Postman / Newman'],
+  Observability: ['ELK Stack / OpenSearch', 'Dynatrace', 'CloudWatch', 'CloudTrail'],
   Data: ['PostgreSQL', 'MySQL', 'MongoDB', 'Databricks', 'Airflow', 'Pandas', 'NumPy', 'Tableau'],
   'AI tooling': ['Claude Code', 'Agentic AI-assisted development'],
 }

@@ -441,6 +441,7 @@ kbd {
 .skill-cloud .g-4 { --c: var(--warm); }
 .skill-cloud .g-5 { --c: #f472b6; }
 .skill-cloud .g-6 { --c: #34d399; }
+.skill-cloud .g-7 { --c: #fb923c; }
 .certs { margin-bottom: 18px; }
 .sub-title { font-size: 1.05rem; margin: 0 0 16px; color: var(--muted); font-weight: 600; }
 .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
